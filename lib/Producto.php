@@ -1,15 +1,31 @@
 <?php
     class Producto {
-        public $nombre = '';
-        public $precio = 0;
-        public $codigo = '';
+        public $nombre;
+        public $precio;
+        public $codigo;
 
-        function __construct() {}
+        public function __construct() { 
+            $argv = func_get_args();
+            switch( func_num_args() ) {
+                case 1:
+                    //self::__construct1($argv[0]);
+                    break;
+                case 2:
+                    //self::__construct2( $argv[0], $argv[1] );
+                    break;
+                case 3:
+                    self::__construct3( $argv[0], $argv[1], $argv[2] );
+            }
+        }
 
-        function __construct1($nombre, $precio, $codigo) {
+        private function __construct3($nombre, $precio, $codigo) {
             $this->nombre = $nombre;
             $this->precio = $precio;
             $this->codigo = $codigo;
+        }
+
+        public function totalUSD() {
+            return $this->precio / 675;
         }
     }
 ?>
